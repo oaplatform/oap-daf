@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MaxmindGeodataTest {
 
-    @Test
+    @Test( enabled = false )
     @SneakyThrows
     public void byIp() {
         try( MaxmindGeodata maxmind = new MaxmindGeodata( "/GeoLite2-City.mmdb" ) ) {
