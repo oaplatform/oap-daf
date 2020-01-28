@@ -1,0 +1,14 @@
+name: oap-application-daf
+dependsOn:
+
+services:
+
+  oap-application-daf-geodata:
+    implementation: oap.application.daf.geo.MaxmindGeodata
+    supervision:
+      supervise: true
+
+  oap-application-daf-geodata-enricher:
+    implementation: oap.application.daf.geo.GeodataEnricher
+    parameters:
+      geodata: "@service:oap-application-daf-geodata"
