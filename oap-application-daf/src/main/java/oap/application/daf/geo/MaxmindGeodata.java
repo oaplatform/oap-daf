@@ -26,7 +26,6 @@ package oap.application.daf.geo;
 
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.maxmind.geoip2.record.Country;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +38,7 @@ import java.util.Optional;
 @Slf4j
 public class MaxmindGeodata implements Closeable, Geodata {
     private DatabaseReader database;
-    private String mmdb;
+    private final String mmdb;
 
     public MaxmindGeodata( String mmdb ) {
         this.mmdb = mmdb;

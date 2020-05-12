@@ -32,8 +32,8 @@ import java.util.Optional;
 
 @Slf4j
 public abstract class Handler<Rx extends Request, Rs extends Response> {
-    protected List<RequestEnricher<Rx>> enrichers = new ArrayList<>();
-    protected List<RequestFilter<Rx>> prefilters = new ArrayList<>();
+    protected final List<RequestEnricher<Rx>> enrichers = new ArrayList<>();
+    protected final List<RequestFilter<Rx>> prefilters = new ArrayList<>();
 
     public Optional<Rs> perform( Rx request ) {
         for( RequestEnricher<Rx> enricher : enrichers ) enricher.enrich( request );

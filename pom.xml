@@ -27,9 +27,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <packaging>pom</packaging>
-    <groupId>oap</groupId>
     <artifactId>oap-application-daf-parent</artifactId>
-    <version>${revision}</version>
+    <version>${oap.daf.project.version}</version>
+
+    <parent>
+        <groupId>oap</groupId>
+        <artifactId>oap.maven</artifactId>
+        <version>1.0.9</version>
+    </parent>
 
     <modules>
         <module>oap-application-daf</module>
@@ -40,118 +45,19 @@
             <id>oap</id>
             <url>https://mvn.oaplatform.org</url>
         </repository>
-        <repository>
-            <id>projectlombok.org</id>
-            <url>https://projectlombok.org/edge-releases</url>
-        </repository>
     </repositories>
 
-    <distributionManagement>
-        <repository>
-            <id>oap</id>
-            <url>https://mvn.oaplatform.org/</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <oap.daf.project.version>1.0.0</oap.daf.project.version>
 
-        <revision>1.0.0</revision>
+        <oap.deps.oap.version>6.9.17</oap.deps.oap.version>
+        <oap.deps.slf4j.version>1.7.30</oap.deps.slf4j.version>
+        <oap.deps.logback.version>1.2.3</oap.deps.logback.version>
 
-        <oap.version>6.4.15</oap.version>
-        <slf4j.version>1.7.26</slf4j.version>
-        <lombok.version>edge-SNAPSHOT</lombok.version>
-        <assertj.version>3.12.2</assertj.version>
-        <logback.version>1.2.3</logback.version>
+        <oap.deps.lombok.version>1.18.12</oap.deps.lombok.version>
+
+        <oap.deps.testng.version>7.1.0</oap.deps.testng.version>
+        <oap.deps.assertj.version>3.15.0</oap.deps.assertj.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <useIncrementalCompilation>true</useIncrementalCompilation>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                        <arg>-Xlint:unchecked</arg>
-                        <arg>-Xlint:preview</arg>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
-                <configuration>
-                    <argLine>
-                        -ea
-                        --enable-preview
-                    </argLine>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <trimStackTrace>false</trimStackTrace>
-                    <useFile>true</useFile>
-                    <disableXmlReport>false</disableXmlReport>
-                    <printSummary>true</printSummary>
-                    <forkedProcessTimeoutInSeconds>4800</forkedProcessTimeoutInSeconds>
-                    <useSystemClassLoader>false</useSystemClassLoader>
-                    <runOrder>balanced</runOrder>
-                    <enableAssertions>true</enableAssertions>
-                    <forkMode>once</forkMode>
-                    <includes>
-                        <include>**/*Test.*</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.1.0</version>
-                <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -24,8 +24,12 @@
 
 package oap.application.daf.trace;
 
+import oap.trace.Trace;
+
 public interface WithTrace {
     Trace trace();
 
-    boolean tracing();
+    default boolean tracing() {
+        return trace().isTracing();
+    }
 }

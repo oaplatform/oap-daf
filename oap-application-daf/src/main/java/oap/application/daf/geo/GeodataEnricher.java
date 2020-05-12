@@ -31,7 +31,7 @@ import oap.application.daf.device.WithDevice;
 
 @Slf4j
 public class GeodataEnricher<Rx extends Request & WithDevice & WithGeo> implements RequestEnricher<Rx> {
-    private Geodata geodata;
+    private final Geodata geodata;
 
     public GeodataEnricher( Geodata geodata ) {
         this.geodata = geodata;
