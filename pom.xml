@@ -56,7 +56,7 @@
 
         <oap.deps.lombok.version>1.18.12</oap.deps.lombok.version>
 
-        <oap.deps.testng.version>7.1.0</oap.deps.testng.version>
+        <oap.deps.testng.version>7.6.1</oap.deps.testng.version>
         <oap.deps.assertj.version>3.15.0</oap.deps.assertj.version>
     </properties>
 
